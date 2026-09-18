@@ -13,6 +13,7 @@ plus a persistent "You are visitor number N" counter.
 | `jumpscare.html` | Served at `/jumpscare` |
 | `style.css` | Shared stylesheet |
 | `visitor-counter.js` | Fills in the counter on each page |
+| `i18n.js` | Translations and the language switcher |
 | `functions/api/visits.js` | Cloudflare Pages Function backing the counter |
 | `images/`, `cheese.png`, `horse.mp3`, `horse.ogv` | Assets |
 
@@ -40,6 +41,28 @@ Two details worth knowing:
 
 If the database binding is missing or the API fails, the page shows `??????` and
 nothing else on the site is affected.
+
+## Languages
+
+The site reads in English, Simplified Chinese and Pirate. A switcher at the top
+of each page sets the language and the choice is remembered in `localStorage`,
+so it carries across pages and later visits.
+
+Every translatable string lives in one of the three tables in `i18n.js` and is
+pulled into the page through a `data-i18n="<key>"` attribute on the element
+that holds it. To change some wording, edit the table; to add a language, add a
+fourth table and one more button to the switcher in each page's markup.
+
+Two things are worth knowing:
+
+- **Chinese wraps the visitor number** rather than trailing it, so the counter
+  label is split into `counter.before` and `counter.after` and the digits sit
+  between them.
+- **A first-time visitor with a Chinese browser gets Chinese**; everyone else
+  gets English. Pirate is always opt-in.
+
+Left untranslated on purpose: the site name and the two marquees, which are
+not really English to begin with.
 
 ## Setup
 
