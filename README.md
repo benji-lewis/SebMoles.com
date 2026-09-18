@@ -75,3 +75,5 @@ npx wrangler pages dev . --d1 DB=sebmoles-visits
 
 That serves the static pages and the function together, against a local D1
 database, at http://localhost:8788.
+
+trigger ci pls
