@@ -167,3 +167,47 @@
     color: rgb(120, 120, 120);
     text-shadow: none;
   }
+
+  /* ---- language switcher ---- */
+  .lang-switcher {
+    clear: both;
+    text-align: center;
+    padding: 10px 8px;
+    background-color: rgb(255, 252, 69);
+    border-bottom: 5px double black;
+    font-family: Comic Sans MS, cursive;
+    font-size: 20px;
+  }
+
+  .lang-switcher .lang-label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .lang-button {
+    margin: 4px 5px;
+    padding: 8px 18px;
+    background-color: greenyellow;
+    border: 4px outset rgb(0, 255, 255);
+    font-family: Comic Sans MS, cursive;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+  }
+
+  .lang-button:hover {
+    background-color: fuchsia;
+  }
+
+  .lang-button-active {
+    background-color: rgb(255, 118, 232);
+    border-style: inset;
+    font-weight: bold;
+  }
+
+  /* The odometer sits between the two halves of the label, because Chinese
+     wraps the number ("您是第 N 位访客") rather than trailing it. */
+  .visitor-counter .odometer + [data-i18n] {
+    display: block;
+  }

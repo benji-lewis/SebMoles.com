@@ -1,14 +1,22 @@
 <html>
 <head>
-    <title>Seb Moles</title>
+    <title data-i18n="title.home">Seb Moles</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="i18n.js"></script>
 </head>
 
 <body id="grad2" style="font-family: Copperplate, Papyrus, fantasy; font-size: 40px;">
-    <h2>hello i am seb moles this is my website</h2>
-    <li><a class="div" style="font-family: Comic Sans MS, cursive; font-size: 35px; background-color: greenyellow;" href="page2.html">READ MORE...</a></li>
+    <div class="lang-switcher">
+        <span class="lang-label" data-i18n="lang.label">Language:</span>
+        <button type="button" class="lang-button" data-lang="en" aria-pressed="true">English</button>
+        <button type="button" class="lang-button" data-lang="zh-CN" aria-pressed="false">中文</button>
+        <button type="button" class="lang-button" data-lang="pirate" aria-pressed="false">Pirate</button>
+    </div>
+
+    <h2 data-i18n="home.heading">hello i am seb moles this is my website</h2>
+    <li><a class="div" style="font-family: Comic Sans MS, cursive; font-size: 35px; background-color: greenyellow;" href="page2.html" data-i18n="home.readMore">READ MORE...</a></li>
 
 
     <marquee style="font-family: Segoe UI,Tahoma,Arial; font-size: 30px;" behaviour="scroll" direction="left"
@@ -30,40 +38,43 @@
     <div class="container">
         <div class="center">
             <button style="background-color: red; color: white;" onclick="popUp()">
-                <li><a style="font-family: Comic Sans MS, cursive; font-size: 35px; " href=https://davidwhite.net>
-                    david white affiliated website
-                </a></li>
+                <li><a style="font-family: Comic Sans MS, cursive; font-size: 35px; " href=https://davidwhite.net data-i18n="home.davidWhite">david white affiliated website</a></li>
             </button>
         </div>
     </div>
     
     <script>
         function popUp() {
-            if (confirm("are you ready to leave sebmoles.com") == true) {
-                alert("okay"); }
+            // Fall back to the English wording if i18n.js has not loaded.
+            function say(key, english) {
+                return window.SebMolesI18n ? window.SebMolesI18n.t(key) : english;
+            }
+            if (confirm(say("home.confirmLeave", "are you ready to leave sebmoles.com")) == true) {
+                alert(say("home.alertOkay", "okay")); }
                 else {
-                    alert("good boy");
+                    alert(say("home.alertGoodBoy", "good boy"));
                     window.open("https://sebmoles.com/jumpscare");
                 }
             }
     </script>
 
-    <h6 style="text-align: center;">Table</h6>
+    <h6 style="text-align: center;" data-i18n="home.tableHeading">Table</h6>
     <aside class="asideright"><img src="images/table.jpg" width="240px" height="320px" > </aside>
-    <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 35px;">A wood table is a sturdy and versatile piece of furniture made from natural wood. It features a flat surface supported by legs, offering a functional space for dining, working, or displaying items. Wood tables come in various styles, finishes, and sizes, adding warmth and elegance to any setting.</p>
-    <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 35px;">A table is used for dining, working, studying, displaying items, and gathering with others. It serves as a versatile surface for various activities in homes, offices, and public spaces.</p>
+    <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 35px;" data-i18n="home.tableP1">A wood table is a sturdy and versatile piece of furniture made from natural wood. It features a flat surface supported by legs, offering a functional space for dining, working, or displaying items. Wood tables come in various styles, finishes, and sizes, adding warmth and elegance to any setting.</p>
+    <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 35px;" data-i18n="home.tableP2">A table is used for dining, working, studying, displaying items, and gathering with others. It serves as a versatile surface for various activities in homes, offices, and public spaces.</p>
     <p> </p>
 
 
 
 
     <div id="visitor-counter" class="visitor-counter">
-        You are visitor number
+        <span data-i18n="counter.before">You are visitor number</span>
         <span class="odometer" data-visitor-count>??????</span>
+        <span data-i18n="counter.after"></span>
     </div>
     <script src="visitor-counter.js"></script>
 
-    <footer id="footer" style="text-align: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+    <footer id="footer" data-i18n="footer.thanks" style="text-align: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
         thanks for visiting seb moles website
     </footer>
         
